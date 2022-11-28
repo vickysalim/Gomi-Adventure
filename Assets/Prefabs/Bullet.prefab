@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58c090022e3141e49ba743f50f14988f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 10
   bulletTimer: 0
   maxBulletTimer: 1
   player: {fileID: 0}
