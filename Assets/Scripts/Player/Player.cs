@@ -13,32 +13,33 @@ public class Player : MonoBehaviour
     public int playerLife = 3;
     public int maxHealth = 100;
     public int health;
-    public float damage = 1;
+    public int damage = 1;
 
     // Start is called before the first frame update
     void Start()
     {
         respawnPoint = this.transform.position;
-        health = Mathf.Clamp(0, maxHealth, maxHealth);
+        health = Mathf.Clamp(maxHealth, 0, maxHealth);
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Instantiate(bulletPrefab, shootingPoint.position, transform.rotation);
         }
 
-        if(health <= 0)
+        if (health <= 0)
         {
             playerLife--;
 
-            if(playerLife == 0)
+            if (playerLife == 0)
             {
                 Destroy(this.gameObject);
-            } else
+            }
+            else
             {
                 this.transform.position = respawnPoint;
                 health = maxHealth;
