@@ -20,11 +20,12 @@ public class Bullet : MonoBehaviour
 
         player = GameObject.FindGameObjectWithTag("Player");
         cc = player.GetComponent<CharacterController2D>();
-        
-        if(!cc.m_FacingRight)
+
+        if (!cc.m_FacingRight)
         {
             rb.velocity = -(transform.right * speed);
-        } else
+        }
+        else
         {
             rb.velocity = transform.right * speed;
         }
@@ -34,7 +35,7 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         bulletTimer += Time.deltaTime;
-        if(bulletTimer > maxBulletTimer)
+        if (bulletTimer > maxBulletTimer)
         {
             Destroy(this.gameObject);
         }
@@ -50,6 +51,7 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             Debug.Log("bullet hit enemy");
+            Destroy(this.gameObject);
         }
     }
 }
