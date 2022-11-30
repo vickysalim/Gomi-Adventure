@@ -8,9 +8,30 @@ public class Enemy : MonoBehaviour
     public int health;
     public Player player;
 
+    [Header("Enemy Attack")]
+    public bool canShoot; // if true => enemy can attack player
+    public Transform shootingPoint;
+    public GameObject bulletPrefab;
+    public float BulletTimer;
+    public float ShootingDelay;
+
     void Start()
     {
         health = Mathf.Clamp(maxHealth, 0, maxHealth);
+    }
+
+    void Update()
+    {
+        if(canShoot)
+        {
+            BulletTimer += Time.deltaTime;
+
+            if(BulletTimer > ShootingDelay)
+            {
+                Instantiate(bulletPrefab, shootingPoint.position, transform.rotation);
+                BulletTimer = 0;
+            }
+        }    
     }
 
     private void OnDestroy()

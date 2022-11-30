@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public Player player;
+
     [Header("Background")]
     public SpriteRenderer stageBackground;
     public Sprite[] backgrounds;
@@ -15,6 +18,11 @@ public class GameManager : MonoBehaviour
     [Header("Progress")]
     public float gameProgress;
     public int point;
+
+    [Header("UI")]
+    public TMP_Text healthText;
+    public TMP_Text progressText;
+
     void Start()
     {
         coinCount = GameObject.FindGameObjectsWithTag("Trash").Length;
@@ -25,6 +33,10 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         ChangeBackground();
+
+        healthText.text = "Health: " + player.health;
+        progressText.text = ((int)(gameProgress * 100)) + "%";
+
     }
 
     void ChangeBackground()
