@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text progressText;
     public GameObject finishPanel;
     public TMP_Text trashesText;
+    public GameObject pausePanel;
 
     void Start()
     {
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
         initialEnemyCount = enemyCount;
 
         finishPanel.SetActive(false);
+        pausePanel.SetActive(false);
     }
 
     // Update is called once per frame
