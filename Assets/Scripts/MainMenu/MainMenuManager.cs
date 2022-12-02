@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
-    public GameObject startCanvas;
-    public GameObject begginingCanvas;
+    public GameObject beginningCanvas;
+    public GameObject mainMenuCanvas;
+    public GameObject levelSelectionCanvas;
     public GameObject settingsCanvas;
+    public GameObject shopCanvas;
 
     void Start()
     {
@@ -17,26 +19,55 @@ public class MainMenuManager : MonoBehaviour
 
     public void OpenPanelMainMenu()
     {
-        if (startCanvas != null)
+        if (mainMenuCanvas != null)
         {
-            startCanvas.SetActive(true);
-            begginingCanvas.SetActive(false);
+            mainMenuCanvas.SetActive(true);
+
+            beginningCanvas.SetActive(false);
+            levelSelectionCanvas.SetActive(false);
             settingsCanvas.SetActive(false);
+            shopCanvas.SetActive(false);
         }
+    }
+
+    public void GoToLevelSelection()
+    {
+        levelSelectionCanvas.SetActive(true);
+        
+        beginningCanvas.SetActive(false);
+        mainMenuCanvas.SetActive(false);
+        settingsCanvas.SetActive(false);
+        shopCanvas.SetActive(false);
     }
 
     public void GoToSettings()
     {
         settingsCanvas.SetActive(true);
-        startCanvas.SetActive(false);
-        begginingCanvas.SetActive(false);
+        
+        beginningCanvas.SetActive(false);
+        mainMenuCanvas.SetActive(false);
+        levelSelectionCanvas.SetActive(false);
+        shopCanvas.SetActive(false);
+    }
+
+    public void GoToShop()
+    {
+        shopCanvas.SetActive(true);
+        
+        beginningCanvas.SetActive(false);
+        mainMenuCanvas.SetActive(false);
+        levelSelectionCanvas.SetActive(false);
+        settingsCanvas.SetActive(false);
     }
 
     public void BackToMenu()
     {
-        begginingCanvas.SetActive(false);
-        startCanvas.SetActive(true);
+        mainMenuCanvas.SetActive(true);
+
+        beginningCanvas.SetActive(false);
+        levelSelectionCanvas.SetActive(false);
         settingsCanvas.SetActive(false);
+        shopCanvas.SetActive(false);
     }
 
     public void QuitGame()
@@ -44,9 +75,9 @@ public class MainMenuManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void StartGame()
+    public void StartGame(string sceneName)
     {
-        SceneManager.LoadScene("Gameplay");
+        SceneManager.LoadScene(sceneName);
     }
 
     // List<int> widths = new List<int>() { 1280, 1366, 1920 };

@@ -19,13 +19,21 @@ public class Player : MonoBehaviour
     void Start()
     {
         respawnPoint = this.transform.position;
+
+        int maxHealthPrefs = 90 + (10 * PlayerPrefs.GetInt("StatsHealth", 1));
+        maxHealth = maxHealthPrefs;
         health = Mathf.Clamp(maxHealth, 0, maxHealth);
+
+        int damagePrefs = PlayerPrefs.GetInt("StatsDamage", 1);
+        damage = damagePrefs;
+
+        int playerLifePrefs = 1 + PlayerPrefs.GetInt("StatsMaxLives", 1);
+        playerLife = playerLifePrefs;
     }
 
     // Update is called once per frame
     void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Instantiate(bulletPrefab, shootingPoint.position, transform.rotation);
@@ -50,6 +58,12 @@ public class Player : MonoBehaviour
     public void SetRespawnPoint(Vector3 newRespawnPoint)
     {
         respawnPoint = newRespawnPoint;
+    }
+
+    public void ChangeHealth(int amount)
+    {
+        health += amount;
+        health = Mathf.Clamp(health, 0, maxHealth);
     }
 
     private void OnDestroy()

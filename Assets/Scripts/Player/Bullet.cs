@@ -21,6 +21,9 @@ public class Bullet : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         cc = player.GetComponent<CharacterController2D>();
 
+        //float attackRangePrefs = 0.5f + (0.5f * PlayerPrefs.GetInt("StatsAttackRange", 1));
+        //maxBulletTimer = attackRangePrefs;
+
         if (!cc.m_FacingRight)
         {
             rb.velocity = -(transform.right * speed);

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2969191193246956429}
   m_Layer: 0
   m_Name: EnemyBullet
-  m_TagString: Bullet
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,3 +139,6 @@ MonoBehaviour:
   speed: 5
   bulletTimer: 0
   maxBulletTimer: 1
+  damage: 5
+  playerObject: {fileID: 0}
+  player: {fileID: 0}

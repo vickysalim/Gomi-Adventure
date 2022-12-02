@@ -9,11 +9,20 @@ public class EnemyBullet : MonoBehaviour
 
     public float bulletTimer;
     public float maxBulletTimer;
+    public int damage = 5;
+
+    public GameObject playerObject;
+    public Player player;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        playerObject = GameObject.FindGameObjectWithTag("Player");
+
+        if(playerObject != null)
+            player = playerObject.GetComponent<Player>();
 
         // enemy facing left/right not set yet
         rb.velocity = -(transform.right * speed);
@@ -40,9 +49,7 @@ public class EnemyBullet : MonoBehaviour
         {
             Destroy(this.gameObject);
 
-            Debug.Log("enemy bullet hit player");
-            
-            // behavior when touching player not yet
+            player.ChangeHealth(-damage);
         }
     }
 }
