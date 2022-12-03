@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     public CharacterController2D controller;
     public Animator animator;
 
@@ -14,10 +13,13 @@ public class PlayerMovement : MonoBehaviour
     bool jump = false;
     bool crouch = false;
 
+    [Header("Audios")]
+    public AudioSource playerMovementSFX;
+    public AudioClip jumpAudio;
+
     // Update is called once per frame
     void Update()
     {
-
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
@@ -25,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
         {
             jump = true;
             animator.SetBool("IsJumping", true);
+
+            playerMovementSFX.PlayOneShot(jumpAudio);
         }
 
         if (Input.GetButtonDown("Crouch"))

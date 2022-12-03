@@ -139,7 +139,8 @@ MonoBehaviour:
   player: {fileID: 0}
   canShoot: 1
   shootingPoint: {fileID: 7017527045735648081}
-  bulletPrefab: {fileID: 1888439007220005121, guid: 26a9646e065d5da4088170ddaeefc732, type: 3}
+  bulletPrefabLeft: {fileID: 1888439007220005121, guid: 26a9646e065d5da4088170ddaeefc732, type: 3}
+  bulletPrefabRight: {fileID: 1888439007220005121, guid: 362313acb4d2b534ea4d6837ec261da9, type: 3}
   BulletTimer: 0
   ShootingDelay: 0.25
 --- !u!114 &7017527045860934339

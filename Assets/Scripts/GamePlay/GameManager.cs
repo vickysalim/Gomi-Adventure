@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public int currentLevel;
     public Player player;
 
     [Header("Background")]
@@ -105,6 +106,11 @@ public class GameManager : MonoBehaviour
 
             int currentTrashes = PlayerPrefs.GetInt("Trashes");
             PlayerPrefs.SetInt("Trashes", currentTrashes + coinCollected);
+
+            if(((currentLevel - 1) >= PlayerPrefs.GetInt("LevelFinished")))
+            {
+                PlayerPrefs.SetInt("LevelFinished", currentLevel);
+            }
         }
     }
 }

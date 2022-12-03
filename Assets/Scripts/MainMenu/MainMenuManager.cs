@@ -8,43 +8,17 @@ using TMPro;
 
 public class MainMenuManager : MonoBehaviour
 {
-    public GameObject beginningCanvas;
     public GameObject mainMenuCanvas;
     public GameObject levelSelectionCanvas;
     public GameObject settingsCanvas;
     public GameObject shopCanvas;
-    public TMP_Text clickAnywhereText;
 
     void Start()
     {
-        Screen.SetResolution(960, 540, false);
+        if (!PlayerPrefs.HasKey("LevelFinished"))
+            PlayerPrefs.SetInt("LevelFinished", 0);
 
-        beginningCanvas.SetActive(true);
-        StartCoroutine(FadeText());
-    }
-    IEnumerator FadeText()
-    {
-        while(true)
-        {
-            // fade out
-            yield return Fade(0);
-            // wait
-            yield return new WaitForSeconds(0.5f);
-            // fade in
-            yield return Fade(1);
-            // wait
-            yield return new WaitForSeconds(1);
-        }
-    }
-
-    IEnumerator Fade(float targetAlpha)
-    {
-        while (clickAnywhereText.color.a != targetAlpha)
-        {
-            var newAlpha = Mathf.MoveTowards(clickAnywhereText.color.a, targetAlpha, 1 * Time.deltaTime);
-            clickAnywhereText.color = new Color(clickAnywhereText.color.r, clickAnywhereText.color.g, clickAnywhereText.color.b, newAlpha);
-            yield return null;
-        }
+        mainMenuCanvas.SetActive(true);
     }
 
     public void OpenPanelMainMenu()
@@ -53,7 +27,6 @@ public class MainMenuManager : MonoBehaviour
         {
             mainMenuCanvas.SetActive(true);
 
-            beginningCanvas.SetActive(false);
             levelSelectionCanvas.SetActive(false);
             settingsCanvas.SetActive(false);
             shopCanvas.SetActive(false);
@@ -64,7 +37,6 @@ public class MainMenuManager : MonoBehaviour
     {
         levelSelectionCanvas.SetActive(true);
         
-        beginningCanvas.SetActive(false);
         mainMenuCanvas.SetActive(false);
         settingsCanvas.SetActive(false);
         shopCanvas.SetActive(false);
@@ -74,7 +46,6 @@ public class MainMenuManager : MonoBehaviour
     {
         settingsCanvas.SetActive(true);
         
-        beginningCanvas.SetActive(false);
         mainMenuCanvas.SetActive(false);
         levelSelectionCanvas.SetActive(false);
         shopCanvas.SetActive(false);
@@ -84,7 +55,6 @@ public class MainMenuManager : MonoBehaviour
     {
         shopCanvas.SetActive(true);
         
-        beginningCanvas.SetActive(false);
         mainMenuCanvas.SetActive(false);
         levelSelectionCanvas.SetActive(false);
         settingsCanvas.SetActive(false);
@@ -94,7 +64,6 @@ public class MainMenuManager : MonoBehaviour
     {
         mainMenuCanvas.SetActive(true);
 
-        beginningCanvas.SetActive(false);
         levelSelectionCanvas.SetActive(false);
         settingsCanvas.SetActive(false);
         shopCanvas.SetActive(false);

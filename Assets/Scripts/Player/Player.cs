@@ -15,6 +15,10 @@ public class Player : MonoBehaviour
     public int health;
     public int damage = 1;
 
+    [Header("Audios")]
+    public AudioSource playerSFX;
+    public AudioClip attackAudio;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +41,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Instantiate(bulletPrefab, shootingPoint.position, transform.rotation);
+            playerSFX.PlayOneShot(attackAudio);
         }
 
         if (health <= 0)

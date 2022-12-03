@@ -14,6 +14,8 @@ public class EnemyBullet : MonoBehaviour
     public GameObject playerObject;
     public Player player;
 
+    public bool isFacingRight;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +27,13 @@ public class EnemyBullet : MonoBehaviour
             player = playerObject.GetComponent<Player>();
 
         // enemy facing left/right not set yet
-        rb.velocity = -(transform.right * speed);
+        if(!isFacingRight)
+        {
+            rb.velocity = -(transform.right * speed);
+        } else
+        {
+            rb.velocity = (transform.right * speed);
+        }
     }
 
     // Update is called once per frame

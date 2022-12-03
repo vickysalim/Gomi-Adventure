@@ -203,7 +203,11 @@ MonoBehaviour:
   health: 0
   player: {fileID: 0}
   canShoot: 0
+  canDamage: 1
   shootingPoint: {fileID: 0}
-  bulletPrefab: {fileID: 0}
+  bulletPrefabLeft: {fileID: 1888439007220005121, guid: 26a9646e065d5da4088170ddaeefc732, type: 3}
+  bulletPrefabRight: {fileID: 1888439007220005121, guid: 362313acb4d2b534ea4d6837ec261da9, type: 3}
   BulletTimer: 0
   ShootingDelay: 0
+  DamageTimer: 0
+  TouchDelay: 0.25
